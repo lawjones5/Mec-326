@@ -3,7 +3,24 @@
 tS = point(4).time(:,2);
 
 sf = size(tS)./abs(max(tS));
-for avg 1to8
-    plot(point(1).time(),point(1).output());
+
+% for points = 1:10
+points = 1;
+    tempoutput = mean(point(points).output(:,:),2);
+%     plot(point(points).time(:,1),tempoutput);
+    hold on
     legend
-end
+    FRF = fft(tempoutput());
+    FRF = [ FRF(1) ; 2*FRF(2:end/2) ];
+
+
+    size(FRF)
+    freq = (0:sf/size(FRF):sf);
+    freq = freq';
+    freq = freq(2:end) ;
+
+    set(gca, 'YScale', 'log')
+    plot(freq(1:end),abs(FRF))
+   
+
+% end
