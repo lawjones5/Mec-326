@@ -1,11 +1,11 @@
-% point = get_tap_test_data;
+load("blade1_data.mat");
 
 tS = point(4).time(:,2);
 
 sf = size(tS)./abs(max(tS));
 
-% for points = 1:10
-points = 1;
+for points = 1:10
+
     tempoutput = mean(point(points).output(:,:),2);
 %     plot(point(points).time(:,1),tempoutput);
     hold on
@@ -23,4 +23,4 @@ points = 1;
     plot(freq(1:end),abs(FRF))
    
 
-% end
+end
